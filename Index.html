@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wizard Screens & Shades | Fresh Air. Beautiful Views. No Compromise.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+/* ════════════════════════════════════════
+   DESIGN TOKENS — Warm Architectural Luxury
+════════════════════════════════════════ */
+:root {
+  --teal:       #2BBFB3;
+  --teal-dk:    #22A89D;
+  --teal-pale:  #F0FAF9;
+  --charcoal:   #2C2C2C;
+  --navy:       #0D1B2A;
+
+  --warm-white: #FDFBF8;
+  --ivory:      #FAF7F2;
+  --cream:      #F5F0E8;
+  --linen:      #EDE8DF;
+  --stone:      #E4DDD4;
+  --pebble:     #CEC6BC;
+
+  --ink:        #1C1C1A;
+  --ink-mid:    #484644;
+  --ink-soft:   #78736E;
+  --ink-faint:  #ADA9A3;
+
+  --gap: 140px;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family:'Montserrat',sans-serif;
+  background:var(--warm-white);
+  color:var(--ink);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+/* ════════════════════════════════════════
+   PHONE BAR — slim, clean
+════════════════════════════════════════ */
+.phone-bar {
+  position:sticky; top:0; z-index:300;
+  background:var(--charcoal);
+  height:38px;
+  display:flex; align-items:center; justify-content:flex-end;
+  padding:0 52px; gap:14px;
+}
+.phone-bar .tag {
+  font-size:10px; font-weight:400;
+  color:rgba(255,255,255,0.28); letter-spacing:0.1em;
+}
+.phone-bar a {
+  display:inline-flex; align-items:center; gap:7px;
+  font-size:12px; font-weight:700; letter-spacing:0.05em;
+  color:var(--teal); text-decoration:none;
+}
+.phone-flash { animation:blink 1.8s ease-in-out infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.18} }
+
+/* ════════════════════════════════════════
+   NAV — clean, uncluttered
+════════════════════════════════════════ */
+nav {
+  position:sticky; top:38px; z-index:200;
+  background:rgba(253,251,248,0.97);
+  backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--stone);
+  height:68px;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 52px;
+  box-shadow:0 1px 16px rgba(0,0,0,0.04);
+}
+.logo {
+  display:flex; align-items:center; text-decoration:none;
+  background:var(--charcoal);
+  padding:6px 14px;
+  border-radius:4px;
+}
+.logo img { height:32px; width:auto; display:block; }
+.nav-links { display:flex; align-items:center; gap:28px; }
+.nav-links a {
+  font-size:10px; font-weight:600;
+  letter-spacing:0.13em; text-transform:uppercase;
+  color:var(--ink-soft); text-decoration:none;
+  transition:color .2s; white-space:nowrap;
+}
+.nav-links a:hover { color:var(--teal); }
+.nav-cta {
+  background:var(--charcoal) !important;
+  color:var(--warm-white) !important;
+  padding:10px 22px !important; border-radius:3px;
+  font-size:10px !important;
+  font-weight:700 !important; letter-spacing:0.12em !important;
+  transition:background .2s !important; white-space:nowrap;
+}
+.nav-cta:hover { background:var(--teal) !important; }
+
+/* ════════════════════════════════════════
+   UTILITIES
+════════════════════════════════════════ */
+.wrap { max-width:1260px; margin:0 auto; padding:0 56px; }
+
+.eyebrow {
+  font-size:10px; font-weight:600;
+  letter-spacing:0.28em; text-transform:uppercase;
+  color:var(--ink-soft); display:block; margin-bottom:14px;
+}
+.eyebrow.light { color:rgba(255,255,255,0.45); }
+
+h2.hed {
+  font-family:'Lora',serif;
+  font-size:clamp(32px,3.4vw,52px);
+  font-weight:700; line-height:1.13;
+  color:var(--charcoal); margin-bottom:18px;
+  letter-spacing:-0.01em;
+}
+h2.hed em { font-style:italic; color:var(--teal); }
+h2.hed.light { color:var(--warm-white); }
+h2.hed.light em { color:rgba(255,255,255,0.45); }
+
+.body-copy {
+  font-size:16px; font-weight:300;
+  line-height:1.9; color:var(--ink-soft);
+}
+.body-copy.light { color:rgba(255,255,255,0.58); }
+
+/* Buttons */
+.btn-dark {
+  display:inline-flex; align-items:center; gap:9px;
+  background:var(--charcoal); color:var(--warm-white);
+  font-size:11px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase;
+  text-decoration:none; padding:16px 36px; border-radius:3px;
+  transition:background .2s, transform .2s;
+}
+.btn-dark:hover { background:var(--teal); transform:translateY(-2px); }
+
+.btn-teal {
+  display:inline-flex; align-items:center; gap:9px;
+  background:var(--teal); color:var(--warm-white);
+  font-size:11px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase;
+  text-decoration:none; padding:16px 36px; border-radius:3px;
+  transition:background .2s, transform .2s;
+}
+.btn-teal:hover { background:var(--teal-dk); transform:translateY(-2px); }
+
+.btn-ink {
+  display:inline-flex; align-items:center; gap:9px;
+  background:transparent; color:var(--ink-mid);
+  font-size:11px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase;
+  text-decoration:none; padding:15px 30px; border-radius:3px;
+  border:1.5px solid var(--pebble);
+  transition:border-color .2s, color .2s;
+}
+.btn-ink:hover { border-color:var(--teal); color:var(--teal); }
+
+.btn-ghost {
+  display:inline-flex; align-items:center; gap:9px;
+  background:transparent; color:rgba(255,255,255,0.75);
+  font-size:11px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase;
+  text-decoration:none; padding:15px 30px; border-radius:3px;
+  border:1.5px solid rgba(255,255,255,0.25);
+  transition:border-color .2s, color .2s;
+}
+.btn-ghost:hover { border-color:rgba(255,255,255,0.6); color:var(--warm-white); }
+
+/* Reveal */
+.rv { opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease; }
+.rv.on { opacity:1; transform:none; }
+.d1{transition-delay:.1s} .d2{transition-delay:.2s} .d3{transition-delay:.3s} .d4{transition-delay:.4s}
+
+/* Placeholders */
+.ph {
+  background:linear-gradient(135deg,#EDEAD4 0%,#E2DDD4 100%);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:12px; text-align:center; padding:32px; position:relative; overflow:hidden;
+}
+.ph-icon { display:none; }
+.ph-label { display:none; }
+.ph-note  { display:none; }
+
+/* ════════════════════════════════════════
+   HERO
+════════════════════════════════════════ */
+.hero {
+  position:relative;
+  height:calc(100vh - 106px); min-height:660px;
+  overflow:hidden; display:flex; align-items:center;
+}
+.hero-media {
+  position:absolute; inset:0; width:100%; height:100%; overflow:hidden;
+}
+.hero-media img, .hero-media video { width:100%; height:100%; object-fit:cover; display:block; }
+.hero-media .ph { width:100%; height:100%; border-radius:0; }
+
+/* Gradient — warm, light-heavy on left */
+.hero-grad {
+  position:absolute; inset:0;
+  background:linear-gradient(105deg,
+    rgba(253,251,248,0.96) 0%,
+    rgba(253,251,248,0.80) 36%,
+    rgba(253,251,248,0.18) 66%,
+    transparent 100%);
+}
+.hero-content {
+  position:relative; z-index:2;
+  padding:0 64px; max-width:660px;
+  animation:riseUp .9s ease-out both;
+}
+@keyframes riseUp { from{opacity:0;transform:translateY(26px)} to{opacity:1;transform:none} }
+
+.hero h1 {
+  font-family:'Lora',serif;
+  font-size:clamp(42px,5.2vw,76px);
+  font-weight:700; line-height:1.06;
+  color:var(--charcoal); margin-bottom:22px;
+  letter-spacing:-0.02em;
+}
+.hero h1 em { font-style:italic; color:var(--teal); }
+
+.hero-sub {
+  font-size:17px; font-weight:300; line-height:1.82;
+  color:var(--ink-mid); max-width:480px; margin-bottom:18px;
+}
+.hero-trust {
+  display:flex; align-items:center; flex-wrap:wrap; gap:6px 20px; margin-bottom:42px;
+}
+.trust-pill {
+  display:inline-flex; align-items:center; gap:6px;
+  font-size:11px; font-weight:400; color:var(--ink-faint); letter-spacing:0.03em;
+}
+.trust-pill svg { flex-shrink:0; color:var(--teal); }
+.hero-actions { display:flex; gap:14px; flex-wrap:wrap; align-items:center; }
+
+/* ════════════════════════════════════════
+   LIFESTYLE — Dream
+════════════════════════════════════════ */
+.lifestyle {
+  padding:var(--gap) 0;
+  background:var(--ivory);
+}
+.lifestyle-grid {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:96px; align-items:center;
+}
+.lifestyle-lead {
+  font-family:'Lora',serif;
+  font-size:clamp(19px,1.7vw,25px);
+  font-weight:400; font-style:italic;
+  color:var(--ink-mid); line-height:1.62;
+  margin-bottom:26px; max-width:440px;
+  border-left:3px solid var(--teal); padding-left:22px;
+}
+.lifestyle-body { margin-bottom:36px; max-width:420px; }
+.lifestyle-benefits { list-style:none; margin-bottom:52px; }
+.lifestyle-benefits li {
+  display:flex; align-items:flex-start; gap:14px;
+  padding:13px 0; border-bottom:1px solid var(--stone);
+  font-size:14px; font-weight:500; color:var(--ink-mid); line-height:1.55;
+}
+.lifestyle-benefits li::before {
+  content:''; flex-shrink:0;
+  width:5px; height:5px; margin-top:6px; border-radius:50%;
+  background:var(--ink-faint);
+}
+.lifestyle-visual { position:relative; padding-bottom:40px; }
+.lifestyle-main-img {
+  width:100%; height:560px; object-fit:cover;
+  border-radius:6px; display:block;
+  box-shadow:0 24px 60px rgba(0,0,0,0.09);
+}
+.lifestyle-inset {
+  position:absolute; bottom:0; left:-28px;
+  width:44%; aspect-ratio:4/3;
+  object-fit:cover; border-radius:5px; display:block;
+  border:5px solid var(--ivory);
+  box-shadow:0 16px 44px rgba(0,0,0,0.11); z-index:2;
+}
+.lifestyle-tag {
+  position:absolute; top:32px; right:-14px;
+  background:var(--charcoal); color:var(--warm-white);
+  padding:16px 22px; border-radius:3px;
+  font-size:10px; font-weight:600;
+  letter-spacing:0.14em; text-transform:uppercase;
+  line-height:1.7; z-index:3;
+  box-shadow:0 8px 28px rgba(0,0,0,0.18);
+}
+
+/* ════════════════════════════════════════
+   GUIDED DISCOVERY — Category Panels
+════════════════════════════════════════ */
+.discovery {
+  padding:var(--gap) 0;
+  background:var(--cream);
+}
+.discovery-hdr { text-align:center; margin-bottom:80px; }
+.discovery-hdr .hed { max-width:580px; margin:0 auto 16px; }
+.discovery-hdr .body-copy { max-width:500px; margin:0 auto; font-size:15px; }
+
+/* 4-category grid — 2×2 on desktop */
+.cat-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:3px;
+}
+.cat-panel {
+  position:relative; overflow:hidden;
+  display:grid; grid-template-columns:1fr 1fr;
+  min-height:420px;
+  background:var(--warm-white);
+  border:1px solid var(--stone);
+  transition:box-shadow .35s, border-color .35s;
+  cursor:pointer;
+}
+.cat-panel:hover { box-shadow:0 20px 56px rgba(0,0,0,0.1); border-color:var(--pebble); }
+
+/* Photo side */
+.cat-photo {
+  position:relative; overflow:hidden; min-height:380px;
+}
+.cat-photo img {
+  width:100%; height:100%; object-fit:cover; display:block;
+  filter:brightness(0.88) saturate(0.9);
+  transition:transform .7s ease, filter .4s;
+}
+.cat-panel:hover .cat-photo img { transform:scale(1.05); filter:brightness(1) saturate(1); }
+.cat-photo .ph { width:100%; height:100%; border-radius:0; background:linear-gradient(135deg,#E8E4DC 0%,#D8D2C8 100%); }
+
+/* Content side */
+.cat-body {
+  padding:44px 40px;
+  display:flex; flex-direction:column; justify-content:space-between;
+}
+.cat-num {
+  font-family:'Lora',serif;
+  font-size:60px; font-weight:700;
+  color:var(--stone); line-height:1;
+  margin-bottom:0;
+  display:block;
+}
+.cat-top { margin-bottom:28px; }
+.cat-label {
+  font-size:9px; font-weight:700;
+  letter-spacing:0.28em; text-transform:uppercase;
+  color:var(--teal); display:block; margin-bottom:10px;
+}
+.cat-title {
+  font-family:'Montserrat',sans-serif;
+  font-size:22px; font-weight:700;
+  color:var(--charcoal); line-height:1.22;
+  margin-bottom:10px; letter-spacing:-0.01em;
+}
+.cat-desc {
+  font-size:13px; font-weight:300;
+  color:var(--ink-soft); line-height:1.8;
+  margin-bottom:20px;
+}
+/* "Best for" use-case list */
+.cat-uses {
+  list-style:none; margin-bottom:22px;
+}
+.cat-uses li {
+  display:flex; align-items:center; gap:9px;
+  font-size:12px; font-weight:400; color:var(--ink-mid);
+  padding:5px 0;
+}
+.cat-uses li::before {
+  content:''; flex-shrink:0;
+  width:4px; height:4px; border-radius:50%;
+  background:var(--teal);
+}
+/* Recommended product families — small, secondary */
+.cat-products {
+  font-size:10px; font-weight:600;
+  letter-spacing:0.1em; color:var(--ink-faint);
+  margin-bottom:28px; line-height:1.6;
+}
+.cat-products strong {
+  color:var(--ink-mid); font-weight:700;
+}
+.cat-cta {
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:10px; font-weight:700;
+  letter-spacing:0.16em; text-transform:uppercase;
+  color:var(--charcoal); text-decoration:none;
+  border-bottom:1.5px solid var(--charcoal); padding-bottom:3px;
+  width:fit-content;
+  transition:color .2s, border-color .2s;
+}
+.cat-cta:hover { color:var(--teal); border-color:var(--teal); }
+.cat-cta svg { transition:transform .2s; }
+.cat-cta:hover svg { transform:translateX(4px); }
+
+/* ════════════════════════════════════════
+   HOW TO CHOOSE — Decision Guide
+════════════════════════════════════════ */
+.chooser {
+  padding:var(--gap) 0;
+  background:var(--warm-white);
+}
+.chooser-hdr { text-align:center; margin-bottom:72px; }
+.chooser-hdr .hed { max-width:540px; margin:0 auto 14px; }
+.chooser-hdr .body-copy { max-width:460px; margin:0 auto; font-size:15px; }
+
+.chooser-grid {
+  display:grid; grid-template-columns:repeat(4,1fr);
+  gap:0; border:1px solid var(--stone);
+}
+.ch {
+  padding:44px 32px;
+  border-right:1px solid var(--stone);
+  background:var(--warm-white);
+  transition:background .3s;
+  position:relative;
+}
+.ch:last-child { border-right:none; }
+.ch:hover { background:var(--ivory); }
+/* Teal left accent on hover */
+.ch::before {
+  content:''; position:absolute; left:0; top:0; bottom:0;
+  width:3px; background:var(--teal);
+  transform:scaleY(0); transform-origin:bottom;
+  transition:transform .35s ease;
+}
+.ch:hover::before { transform:scaleY(1); }
+.ch-if {
+  font-size:10px; font-weight:700;
+  letter-spacing:0.2em; text-transform:uppercase;
+  color:var(--ink-faint); display:block; margin-bottom:14px;
+}
+.ch-situation {
+  font-family:'Montserrat',sans-serif;
+  font-size:17px; font-weight:700;
+  color:var(--charcoal); margin-bottom:14px;
+  line-height:1.3; letter-spacing:-0.01em;
+}
+.ch-arrow {
+  font-size:11px; font-weight:600;
+  letter-spacing:0.06em; color:var(--ink-soft);
+  margin-bottom:12px; display:block;
+}
+.ch-solution {
+  font-family:'Montserrat',sans-serif;
+  font-size:16px; font-weight:700;
+  color:var(--teal); margin-bottom:12px;
+  line-height:1.3;
+}
+.ch-note {
+  font-size:12px; font-weight:300;
+  color:var(--ink-soft); line-height:1.75;
+}
+
+/* ════════════════════════════════════════
+   WOW — Immersive moment before products
+════════════════════════════════════════ */
+.wow {
+  position:relative; height:560px;
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden;
+}
+.wow-bg {
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  object-fit:cover; object-position:center 40%;
+  filter:brightness(0.45) saturate(0.75);
+}
+.wow-bg.ph { position:absolute; border-radius:0; background:linear-gradient(135deg,#2C2825 0%,#3E3833 100%); }
+.wow-ov {
+  position:absolute; inset:0;
+  background:linear-gradient(to bottom, rgba(26,20,14,0.08) 0%, rgba(26,20,14,0.52) 100%);
+}
+.wow-content {
+  position:relative; z-index:2;
+  text-align:center; max-width:680px; padding:0 40px;
+}
+.wow-content h2 {
+  font-family:'Lora',serif;
+  font-size:clamp(34px,4.2vw,60px);
+  font-weight:700; font-style:italic;
+  color:var(--warm-white); line-height:1.12;
+  margin-bottom:20px; letter-spacing:-0.01em;
+}
+.wow-content p {
+  font-size:18px; font-weight:300;
+  color:rgba(255,255,255,0.68); line-height:1.76;
+  max-width:520px; margin:0 auto 36px;
+}
+
+/* ════════════════════════════════════════
+   BEFORE / AFTER
+════════════════════════════════════════ */
+.transform {
+  padding:var(--gap) 0;
+  background:var(--warm-white);
+}
+.tf-grid { display:grid; grid-template-columns:1fr 1fr; gap:96px; align-items:center; }
+
+.ba {
+  position:relative; height:560px; border-radius:6px;
+  overflow:hidden; box-shadow:0 28px 64px rgba(0,0,0,0.09);
+  cursor:col-resize; user-select:none;
+}
+.ba img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+.ba-r { clip-path:inset(0 50% 0 0); }
+.ba-line {
+  position:absolute; top:0; bottom:0; left:50%;
+  width:2px; background:var(--warm-white); z-index:5; pointer-events:none;
+}
+.ba-knob {
+  position:absolute; top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  width:48px; height:48px; background:var(--warm-white); border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  z-index:6; box-shadow:0 4px 20px rgba(0,0,0,0.16); pointer-events:none;
+}
+.ba-tag {
+  position:absolute; top:20px; z-index:4;
+  font-size:9px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase;
+  padding:5px 13px; border-radius:2px;
+}
+.ba-tag.bef { left:16px; background:rgba(26,20,14,0.55); color:rgba(255,255,255,0.65); }
+.ba-tag.aft { right:16px; background:var(--charcoal); color:var(--warm-white); }
+.ba-note { font-size:10px; color:var(--ink-faint); text-align:center; margin-top:12px; letter-spacing:0.06em; }
+
+.tf-text .body-copy { margin-bottom:36px; max-width:420px; }
+.tf-outcomes { list-style:none; margin-bottom:48px; }
+.tf-outcomes li {
+  display:flex; align-items:center; gap:16px;
+  padding:15px 0; border-bottom:1px solid var(--stone);
+  font-size:15px; font-weight:500; color:var(--ink-mid);
+}
+.tf-outcomes li::before {
+  content:''; flex-shrink:0;
+  width:4px; height:4px; border-radius:50%; background:var(--teal);
+}
+
+/* ════════════════════════════════════════
+   PRODUCTS — space-based, simplified
+════════════════════════════════════════ */
+.products {
+  padding:var(--gap) 0;
+  background:var(--ivory);
+}
+.prod-hdr { margin-bottom:72px; }
+.prod-hdr .hed { max-width:520px; }
+.prod-hdr .body-copy { max-width:440px; margin-top:6px; font-size:15px; }
+
+.pgrid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.pc {
+  background:var(--warm-white); border-radius:6px;
+  overflow:hidden; border:1px solid var(--stone);
+  transition:box-shadow .3s, transform .3s, border-color .3s;
+}
+.pc:hover { box-shadow:0 16px 44px rgba(0,0,0,0.08); transform:translateY(-4px); border-color:var(--pebble); }
+.pc-img { height:220px; overflow:hidden; position:relative; }
+.pc-img img { width:100%; height:100%; object-fit:cover; display:block; filter:brightness(0.88); transition:transform .55s, filter .4s; }
+.pc:hover .pc-img img { transform:scale(1.05); filter:brightness(1); }
+.pc-img .ph { height:100%; border-radius:0; }
+.pc-body { padding:28px 26px 32px; }
+.pc-space {
+  display:inline-block;
+  background:var(--linen); color:var(--ink-soft);
+  font-size:9px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase;
+  padding:4px 12px; border-radius:20px; margin-bottom:14px;
+}
+.pc-name {
+  font-family:'Montserrat',sans-serif;
+  font-size:22px; font-weight:700; color:var(--charcoal);
+  margin-bottom:5px; letter-spacing:-0.01em;
+}
+.pc-benefit { font-size:13px; font-weight:500; color:var(--teal); margin-bottom:10px; }
+.pc-desc { font-size:13px; font-weight:300; color:var(--ink-soft); line-height:1.78; margin-bottom:22px; }
+.pc-learn {
+  display:inline-flex; align-items:center; gap:6px;
+  font-size:10px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase;
+  color:var(--ink-mid); text-decoration:none;
+  border-bottom:1px solid var(--pebble); padding-bottom:2px;
+  transition:color .2s, border-color .2s;
+}
+.pc-learn:hover { color:var(--teal); border-color:var(--teal); }
+.pc-learn svg { transition:transform .2s; }
+.pc-learn:hover svg { transform:translateX(3px); }
+
+/* Featured — SmartScreen Motorized */
+.prod-feat {
+  margin-top:20px; background:var(--charcoal); border-radius:6px;
+  overflow:hidden; display:grid; grid-template-columns:1fr 1fr;
+}
+.pf-img { height:380px; overflow:hidden; }
+.pf-img img { width:100%; height:100%; object-fit:cover; display:block; filter:brightness(0.8); transition:transform .65s; }
+.prod-feat:hover .pf-img img { transform:scale(1.04); }
+.pf-img .ph { height:100%; border-radius:0; background:#2A2725; }
+.pf-body { padding:60px 56px; display:flex; flex-direction:column; justify-content:center; }
+.pf-tag {
+  display:inline-block;
+  background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.14);
+  color:rgba(255,255,255,0.55); font-size:9px; font-weight:700;
+  letter-spacing:0.2em; text-transform:uppercase;
+  padding:5px 13px; border-radius:2px; margin-bottom:20px; width:fit-content;
+}
+.pf-body h3 {
+  font-family:'Lora',serif;
+  font-size:42px; font-weight:700; font-style:italic;
+  color:var(--warm-white); line-height:1.08; margin-bottom:14px;
+}
+.pf-body p { font-size:15px; font-weight:300; color:rgba(255,255,255,0.5); line-height:1.85; margin-bottom:36px; }
+.prod-foot { text-align:center; margin-top:52px; }
+
+/* ════════════════════════════════════════
+   GALLERY
+════════════════════════════════════════ */
+.gallery { padding:var(--gap) 0; background:var(--warm-white); }
+.gal-hdr { text-align:center; margin-bottom:72px; }
+.gal-hdr .hed { margin-bottom:8px; }
+
+.gmain {
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  grid-template-rows:290px 250px 290px;
+  gap:4px;
+}
+.gi { position:relative; overflow:hidden; cursor:pointer; }
+.gi img {
+  width:100%; height:100%; object-fit:cover; display:block;
+  filter:brightness(0.82) saturate(0.88);
+  transition:transform .7s ease, filter .45s;
+}
+.gi:hover img { transform:scale(1.06); filter:brightness(1) saturate(1.05); }
+.gi .ph { height:100%; border-radius:0; }
+.gi-cap {
+  position:absolute; bottom:0; left:0; right:0; padding:22px 20px 16px;
+  background:linear-gradient(to top, rgba(26,20,14,0.82) 0%, transparent 100%);
+  font-size:11px; font-weight:500; letter-spacing:0.06em; color:rgba(255,255,255,0.65);
+}
+.gi-1{grid-column:span 5;grid-row:1}
+.gi-2{grid-column:span 4;grid-row:1}
+.gi-3{grid-column:span 3;grid-row:1}
+.gi-4{grid-column:span 4;grid-row:2}
+.gi-5{grid-column:span 4;grid-row:2}
+.gi-6{grid-column:span 4;grid-row:2}
+.gi-7{grid-column:span 3;grid-row:3}
+.gi-8{grid-column:span 5;grid-row:3}
+.gi-9{grid-column:span 4;grid-row:3}
+
+/* ════════════════════════════════════════
+   WHY WIZARD
+════════════════════════════════════════ */
+.why { padding:var(--gap) 0; background:var(--cream); }
+.why-hdr { text-align:center; margin-bottom:80px; }
+.why-hdr .hed { max-width:520px; margin:0 auto 12px; }
+.why-cols {
+  display:grid; grid-template-columns:repeat(4,1fr);
+  gap:0; border:1px solid var(--stone);
+}
+.wc {
+  background:var(--warm-white); padding:52px 36px;
+  border-right:1px solid var(--stone); transition:background .3s;
+}
+.wc:last-child { border-right:none; }
+.wc:hover { background:var(--ivory); }
+.wc-icon {
+  width:38px; height:38px; border:1px solid var(--stone); border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:15px; color:var(--ink-soft); margin-bottom:22px;
+}
+.wc h3 {
+  font-family:'Montserrat',sans-serif;
+  font-size:15px; font-weight:700; color:var(--charcoal);
+  margin-bottom:11px; letter-spacing:-0.01em;
+}
+.wc p { font-size:13px; font-weight:300; color:var(--ink-soft); line-height:1.9; }
+
+/* ════════════════════════════════════════
+   TESTIMONIAL
+════════════════════════════════════════ */
+.testi {
+  background:var(--linen); padding:112px 0; text-align:center;
+  border-top:1px solid var(--stone); border-bottom:1px solid var(--stone);
+}
+.stars { font-size:15px; color:var(--teal); letter-spacing:6px; margin-bottom:28px; display:block; }
+.testi blockquote {
+  font-family:'Lora',serif;
+  font-size:clamp(20px,2.4vw,32px);
+  font-weight:400; font-style:italic;
+  color:var(--ink); line-height:1.65;
+  max-width:800px; margin:0 auto 24px;
+}
+.testi cite {
+  font-size:10px; font-weight:500; letter-spacing:0.2em; text-transform:uppercase;
+  color:var(--ink-faint); font-style:normal;
+}
+
+/* ════════════════════════════════════════
+   FINAL CTA
+════════════════════════════════════════ */
+.cta-sec { position:relative; padding:200px 0; overflow:hidden; }
+.cta-bg {
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; object-position:center 55%;
+  filter:brightness(0.3) saturate(0.6);
+}
+.cta-bg.ph { position:absolute; border-radius:0; background:#1A140E; }
+.cta-ov {
+  position:absolute; inset:0;
+  background:linear-gradient(135deg, rgba(26,20,14,0.45) 0%, rgba(26,20,14,0.82) 100%);
+}
+.cta-in {
+  position:relative; z-index:2; text-align:center;
+  max-width:660px; margin:0 auto;
+}
+.cta-in .hed { font-size:clamp(36px,4vw,60px); margin-bottom:18px; }
+.cta-in .body-copy { max-width:480px; margin:0 auto 52px; font-size:17px; }
+.cta-btns { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+
+/* ════════════════════════════════════════
+   FOOTER
+════════════════════════════════════════ */
+footer { background:var(--navy); padding:80px 0 36px; }
+.fg { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:56px; margin-bottom:56px; }
+.fb img { height:38px; width:auto; display:block; mix-blend-mode:screen; filter:brightness(1.05); margin-bottom:20px; }
+.fb p { font-size:13px; font-weight:300; color:rgba(255,255,255,0.38); line-height:1.85; max-width:270px; margin-bottom:22px; }
+.fb-ph a { display:block; font-size:15px; font-weight:700; color:var(--teal); text-decoration:none; margin-bottom:5px; }
+.fc h4 { font-size:10px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.22); margin-bottom:18px; }
+.fc ul { list-style:none; }
+.fc li { margin-bottom:11px; }
+.fc a { font-size:13px; font-weight:300; color:rgba(255,255,255,0.42); text-decoration:none; transition:color .2s; }
+.fc a:hover { color:var(--teal); }
+.fbot { border-top:1px solid rgba(255,255,255,0.07); padding-top:28px; display:flex; justify-content:space-between; }
+.fbot p { font-size:11px; color:rgba(255,255,255,0.18); letter-spacing:0.05em; }
+
+/* ════════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════════ */
+@media (max-width:1024px) {
+  :root { --gap:100px; }
+  .lifestyle-grid, .tf-grid { grid-template-columns:1fr; gap:60px; }
+  .lifestyle-inset { display:none; }
+  .lifestyle-visual { padding-bottom:0; }
+  .lifestyle-main-img { height:420px; }
+  .cat-grid { grid-template-columns:1fr; }
+  .cat-panel { grid-template-columns:1fr; }
+  .cat-photo { min-height:260px; }
+  .chooser-grid { grid-template-columns:1fr 1fr; }
+  .ch { border-right:none; border-bottom:1px solid var(--stone); }
+  .ch:last-child { border-bottom:none; }
+  .pgrid { grid-template-columns:1fr 1fr; }
+  .prod-feat { grid-template-columns:1fr; }
+  .pf-img { height:260px; }
+  .why-cols { grid-template-columns:1fr 1fr; }
+  .wc { border-right:none; border-bottom:1px solid var(--stone); }
+  .wc:last-child { border-bottom:none; }
+  .gmain { grid-template-columns:repeat(4,1fr); grid-template-rows:auto; }
+  .gi-1,.gi-2,.gi-3,.gi-4,.gi-5,.gi-6,.gi-7,.gi-8,.gi-9 { grid-column:span 2; grid-row:auto; height:220px; }
+  .fg { grid-template-columns:1fr 1fr; }
+  nav { padding:0 28px; } .phone-bar { padding:0 28px; }
+  .hero-content { padding:0 40px; } .wrap { padding:0 36px; }
+  .wow { height:440px; }
+}
+@media (max-width:720px) {
+  :root { --gap:80px; }
+  .wrap { padding:0 22px; }
+  nav { padding:0 18px; height:60px; top:38px; }
+  .logo img { height:26px; }
+  .logo { padding:5px 10px; }
+  .phone-bar { padding:0 18px; }
+  .phone-bar .tag { display:none; }
+  .nav-links a:not(.nav-cta) { display:none; }
+  .nav-cta { padding:8px 16px !important; font-size:9px !important; }
+  .hero-content { padding:0 22px; max-width:100%; }
+  .hero h1 { font-size:34px; line-height:1.08; }
+  .hero-sub { font-size:15px; line-height:1.7; }
+  .hero-trust { gap:4px 12px; }
+  .trust-pill { font-size:10px; }
+  .chooser-grid { grid-template-columns:1fr; }
+  .pgrid { grid-template-columns:1fr; }
+  .why-cols { grid-template-columns:1fr; }
+  .gmain { grid-template-columns:1fr 1fr; }
+  .gi-1,.gi-2,.gi-3,.gi-4,.gi-5,.gi-6,.gi-7,.gi-8,.gi-9 { grid-column:span 1; height:180px; }
+  .fg { grid-template-columns:1fr; }
+  .wow { height:360px; } .wow-content h2 { font-size:28px; } .wow-content p { font-size:14px; }
+  .lifestyle-tag { display:none; }
+  .cat-body { padding:28px 22px; }
+  .trust-bar-item { padding:4px 12px; font-size:9px; letter-spacing:0.1em; }
+}
+/* ════════════════════════════════════════
+   TRUST BAR — below hero
+════════════════════════════════════════ */
+.trust-bar {
+  background:var(--linen);
+  border-bottom:1px solid var(--stone);
+  padding:14px 0;
+}
+.trust-bar-inner {
+  display:flex; align-items:center; justify-content:center;
+  gap:0; flex-wrap:wrap;
+}
+.trust-bar-item {
+  display:flex; align-items:center; gap:8px;
+  font-size:10px; font-weight:500;
+  letter-spacing:0.16em; text-transform:uppercase;
+  color:var(--ink-faint);
+  padding:4px 32px;
+}
+.trust-bar-item + .trust-bar-item {
+  border-left:1px solid var(--stone);
+}
+.trust-bar-dot {
+  width:4px; height:4px; border-radius:50%;
+  background:var(--teal); flex-shrink:0;
+}
+@media (max-width:720px) {
+  .trust-bar-item { padding:4px 14px; font-size:9px; letter-spacing:0.1em; }
+}
+</style>
+</head>
+<body>
+
+<!-- PHONE BAR -->
+<div class="phone-bar">
+  <span class="tag">Toll Free · North America</span>
+  <a href="tel:18889493667">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14v2.92z"/></svg>
+    <span class="phone-flash">1 888 949 3667</span>
+  </a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">
+    <img src="/mnt/user-data/uploads/wizard-screens-and-shades-white.png" alt="Wizard Screens and Shades">
+  </a>
+  <div class="nav-links">
+    <a href="#discovery">Find My Screen</a>
+    <a href="#products">Products</a>
+    <a href="#gallery">Real Homes</a>
+    <a href="#why">Why Wizard</a>
+    <a href="#cta" class="nav-cta">Talk To An Expert</a>
+  </div>
+</nav>
+
+<!-- ════ HERO ════ -->
+<section class="hero">
+  <div class="hero-media">
+    <!-- REPLACE THIS DIV WITH YOUR HERO VIDEO OR IMAGE:
+    <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;">
+      <source src="hero.mp4" type="video/mp4">
+    </video>
+    OR: <img src="hero.jpg" style="width:100%;height:100%;object-fit:cover;" alt="">
+    -->
+    <div style="width:100%;height:100%;background:linear-gradient(135deg,#C8C0B4 0%,#B8B0A4 100%);"></div>
+  </div>
+  </div>
+  <div class="hero-grad"></div>
+  <div class="hero-content">
+    <span class="eyebrow">Custom Retractable Screens for Modern Homes</span>
+    <h1>Fresh Air.<br>Beautiful Views.<br><em>No Compromise.</em></h1>
+    <p class="hero-sub">Open your doors more often. Enjoy fresh air without bugs, preserve your views, and make the spaces you already love more comfortable.</p>
+    <div class="hero-trust">
+      <span class="trust-pill">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+        Custom made for your home
+      </span>
+      <span class="trust-pill">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+        Professionally installed
+      </span>
+      <span class="trust-pill">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+        Designed to disappear when not in use
+      </span>
+    </div>
+    <div class="hero-actions">
+      <a href="#discovery" class="btn-dark">
+        Find My Best Screen
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </a>
+      <a href="#products" class="btn-ink">See Screen Options</a>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-bar-item">
+      <span class="trust-bar-dot"></span>
+      25+ Years Trusted
+    </div>
+    <div class="trust-bar-item">
+      <span class="trust-bar-dot"></span>
+      Custom Built
+    </div>
+    <div class="trust-bar-item">
+      <span class="trust-bar-dot"></span>
+      Professionally Installed
+    </div>
+    <div class="trust-bar-item">
+      <span class="trust-bar-dot"></span>
+      North America Wide
+    </div>
+  </div>
+</div>
+
+<!-- ════ LIFESTYLE — DREAM ════ -->
+<section class="lifestyle" id="lifestyle">
+  <div class="wrap">
+    <div class="lifestyle-grid">
+
+      <div class="rv">
+        <span class="eyebrow">Open Your Home</span>
+        <h2 class="hed">Enjoy more of the spaces<br>you <em>already love.</em></h2>
+        <p class="lifestyle-lead">There is something different about a home that feels open. The patio doors stay open longer. Fresh air moves through the house. Evenings outside feel more comfortable.</p>
+        <p class="body-copy lifestyle-body">The spaces you already enjoy simply get used more. Wizard retractable screens are designed to help you enjoy fresh air without bugs, preserve your views, and blend beautifully into your home. Hidden when you do not need them. Ready when you do.</p>
+        <ul class="lifestyle-benefits">
+          <li>Fresh Air Without The Bugs</li>
+          <li>Views Worth Keeping</li>
+          <li>More Comfortable Outdoor Living</li>
+          <li>Made Precisely For Your Home</li>
+        </ul>
+        <a href="#discovery" class="btn-dark">Find My Best Screen</a>
+      </div>
+
+      <div class="lifestyle-visual rv d2">
+        <!--
+        ╔════════════════════════════════════════════════════════╗
+        ║  LIFESTYLE MAIN PHOTO                                  ║
+        ║  Scene: Person on warm sunlit patio or sunroom —       ║
+        ║  morning coffee, open doors, golden light, relaxed.    ║
+        ║  Portrait or square. 800×1000px minimum.               ║
+        ╚════════════════════════════════════════════════════════╝
+        -->
+        <div class="ph lifestyle-main-img">
+          <div class="ph-icon">🌅</div>
+          <div class="ph-label">Lifestyle Main Photo Needed</div>
+          <p class="ph-note">Person on sunlit patio, open doors, morning warmth. Aspirational but real. Portrait orientation. 800×1000px minimum.</p>
+        </div>
+        <!--
+        ╔════════════════════════════════════════════════════════╗
+        ║  LIFESTYLE INSET PHOTO                                 ║
+        ║  Scene: Hardware/screen detail close-up, OR            ║
+        ║  overhead patio entertaining shot.                     ║
+        ║  Landscape 4:3. 600×450px minimum.                     ║
+        ╚════════════════════════════════════════════════════════╝
+        -->
+        <div class="ph lifestyle-inset" style="display:flex;">
+          <div class="ph-icon">🔍</div>
+          <div class="ph-label">Detail or Inset Photo</div>
+        </div>
+        <div class="lifestyle-tag">25 Years Trusted<br>in North America</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════ GUIDED DISCOVERY — 4 CATEGORIES ════ -->
+<section class="discovery" id="discovery">
+  <div class="wrap">
+    <div class="discovery-hdr rv">
+      <span class="eyebrow">Find the Right Screen</span>
+      <h2 class="hed">What are you looking <em>to screen?</em></h2>
+      <p class="body-copy">Choose the type of opening you want to screen and we'll guide you to the right solution.</p>
+    </div>
+  </div>
+
+  <div style="max-width:1320px;margin:0 auto;padding:0 52px;">
+    <div class="cat-grid">
+
+      <!-- CATEGORY 1 — Door Openings -->
+      <div class="cat-panel rv">
+        <div class="cat-photo">
+          <!--
+          ╔══════════════════════════════════════════════════════╗
+          ║  CATEGORY PHOTO — DOOR OPENINGS                     ║
+          ║  Scene: Warm front entry or patio door with screen   ║
+          ║  Residential, welcoming, natural light               ║
+          ║  Portrait orientation. 700×840px minimum.            ║
+          ╚══════════════════════════════════════════════════════╝
+          USE FOR NOW: /mnt/user-data/uploads/wizard_screens-18.jpg
+          -->
+          <img src="/mnt/user-data/uploads/wizard_screens-18.jpg" alt="Front entry and patio door screens">
+        </div>
+        <div class="cat-body">
+          <div class="cat-top">
+            <span class="cat-num">01</span>
+          </div>
+          <div>
+            <span class="cat-label">Everyday Door Openings</span>
+            <div class="cat-title">Front Doors, Patio Doors &amp; French Doors</div>
+            <p class="cat-desc">Fresh air through your home without bugs, drafts, or the door swinging open. These screens disappear when not in use and work effortlessly when you need them.</p>
+            <ul class="cat-uses">
+              <li>I want airflow through my front door</li>
+              <li>I want to open my patio without bugs</li>
+              <li>I have a sliding or French door</li>
+              <li>I want a screen that closes on its own</li>
+            </ul>
+            <p class="cat-products"><strong>BetterView</strong> and <strong>RetractaView</strong></p>
+            <a href="#products" class="cat-cta">
+              Explore Door Screen Solutions
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CATEGORY 2 — Large Openings -->
+      <div class="cat-panel rv d1">
+        <div class="cat-photo">
+          <!-- USE: /mnt/user-data/uploads/ada408fd-637e-402f-90a9-580ffb29ce93.jfif -->
+          <img src="/mnt/user-data/uploads/ada408fd-637e-402f-90a9-580ffb29ce93.jfif" alt="Large bifold opening with Wizard screen">
+        </div>
+        <div class="cat-body">
+          <div class="cat-top">
+            <span class="cat-num">02</span>
+          </div>
+          <div>
+            <span class="cat-label">Wide &amp; Architectural Openings</span>
+            <div class="cat-title">Bifold Walls, Large Glass Systems &amp; Wide Openings</div>
+            <p class="cat-desc">For bifold walls, folding glass systems, and wide spans — screens that cover the opening without blocking the view or compromising the architecture.</p>
+            <ul class="cat-uses">
+              <li>I have a bifold or folding glass wall</li>
+              <li>My opening is wider than a standard door</li>
+              <li>I want uninterrupted views when it is open</li>
+              <li>My architect or builder needs a spec</li>
+            </ul>
+            <p class="cat-products"><strong>VistaView</strong>, <strong>VistaView Plus</strong> and <strong>The Horizon</strong></p>
+            <a href="#products" class="cat-cta">
+              Explore Large Opening Solutions
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CATEGORY 3 — Outdoor Living -->
+      <div class="cat-panel rv d2">
+        <div class="cat-photo">
+          <!-- USE: /mnt/user-data/uploads/IMG_5794.JPG -->
+          <img src="/mnt/user-data/uploads/IMG_5794.JPG" alt="Covered outdoor living space with SmartScreen Motorized">
+        </div>
+        <div class="cat-body">
+          <div class="cat-top">
+            <span class="cat-num">03</span>
+          </div>
+          <div>
+            <span class="cat-label">Outdoor Spaces &amp; Covered Patios</span>
+            <div class="cat-title">Covered Patios, Pergolas &amp; Garages</div>
+            <p class="cat-desc">A covered patio, pergola, or garage that feels unusable because of bugs, wind, or glare. Pull-down screens create a room out of a space you already have.</p>
+            <ul class="cat-uses">
+              <li>My covered patio feels unusable in the evening</li>
+              <li>Bugs and wind ruin outdoor entertaining</li>
+              <li>I want to use my garage as a workspace</li>
+              <li>I want motorized convenience</li>
+            </ul>
+            <p class="cat-products"><strong>SmartScreen</strong> and <strong>SmartScreen Motorized</strong></p>
+            <a href="#products" class="cat-cta">
+              Explore Outdoor Living Solutions
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CATEGORY 4 — Security + Ventilation -->
+      <div class="cat-panel rv d3">
+        <div class="cat-photo">
+          <!--
+          ╔══════════════════════════════════════════════════════╗
+          ║  CATEGORY PHOTO — SECURITY + VENTILATION            ║
+          ║  SecuraView on front door or window.                 ║
+          ║  Security mesh visible. Residential and solid.       ║
+          ║  700×840px minimum.                                  ║
+          ╚══════════════════════════════════════════════════════╝
+          -->
+          <div class="ph" style="height:100%; min-height:380px;">
+            <div class="ph-icon">🔒</div>
+            <div class="ph-label">SecuraView Photo Needed</div>
+            <p class="ph-note">Front door or window with SecuraView installed. Security mesh visible. Residential, solid, safe. 700×840px min.</p>
+          </div>
+        </div>
+        <div class="cat-body">
+          <div class="cat-top">
+            <span class="cat-num">04</span>
+          </div>
+          <div>
+            <span class="cat-label">Security &amp; Ventilation</span>
+            <div class="cat-title">Security Screens With Fresh Air</div>
+            <p class="cat-desc">Fresh air with added security. Stainless steel mesh that lets the breeze in and keeps everything else out — without leaving your doors wide open.</p>
+            <ul class="cat-uses">
+              <li>I want fresh air but worry about security</li>
+              <li>I want ventilation without leaving doors wide open</li>
+              <li>I need a screen with added peace of mind</li>
+            </ul>
+            <p class="cat-products"><strong>SecuraView</strong></p>
+            <a href="#products" class="cat-cta">
+              Explore Security Screens
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════ HOW TO CHOOSE ════ -->
+<section class="chooser" id="choose">
+  <div class="wrap">
+    <div class="chooser-hdr rv">
+      <span class="eyebrow">Quick Guide</span>
+      <h2 class="hed">Not sure which category <em>fits your home?</em></h2>
+      <p class="body-copy">Answer one simple question. We will point you in the right direction.</p>
+    </div>
+    <div class="chooser-grid">
+
+      <div class="ch rv">
+        <span class="ch-if">If you have</span>
+        <div class="ch-situation">An everyday front door, patio door, or French door</div>
+        <span class="ch-arrow">→ You need</span>
+        <div class="ch-solution">Door Screens</div>
+        <p class="ch-note">Fresh air and comfort for openings you use every day. Retracts fully when not needed. Closes on its own.</p>
+      </div>
+
+      <div class="ch rv d1">
+        <span class="ch-if">If you have</span>
+        <div class="ch-situation">A bifold wall, folding glass system, or wide opening</div>
+        <span class="ch-arrow">→ You need</span>
+        <div class="ch-solution">Large Opening Screens</div>
+        <p class="ch-note">Spans up to 43 feet. Preserves your views and the architectural intent of the opening when retracted.</p>
+      </div>
+
+      <div class="ch rv d2">
+        <span class="ch-if">If you have</span>
+        <div class="ch-situation">A covered patio, pergola, or garage opening</div>
+        <span class="ch-arrow">→ You need</span>
+        <div class="ch-solution">Outdoor Living Screens</div>
+        <p class="ch-note">Pull-down screens — manual or motorized — that turn your outdoor space into a room you actually use.</p>
+      </div>
+
+      <div class="ch rv d3">
+        <span class="ch-if">If you have</span>
+        <div class="ch-situation">Security concerns alongside your ventilation needs</div>
+        <span class="ch-arrow">→ You need</span>
+        <div class="ch-solution">Security + Ventilation</div>
+        <p class="ch-note">Stainless steel security mesh in a retractable screen. Fresh air without opening your home to risk.</p>
+      </div>
+
+    </div>
+
+    <div style="text-align:center; margin-top:56px;" class="rv">
+      <p style="font-size:14px; font-weight:300; color:var(--ink-soft); margin-bottom:22px;">Still not sure? We will help you choose.</p>
+      <a href="#cta" class="btn-dark">Talk To An Expert</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════ WOW MOMENT ════ -->
+<section class="wow">
+  <!--
+  ╔══════════════════════════════════════════════════════════════════╗
+  ║  WOW SECTION BACKGROUND — MOST EMOTIONALLY IMPORTANT IMAGE      ║
+  ║                                                                  ║
+  ║  Scene: Golden hour patio. Screen down, warm recessed lighting   ║
+  ║  glowing through, outdoor chairs and table, inviting feel.       ║
+  ║  Shot from outside looking in. End of a perfect evening.         ║
+  ║  1920×880 minimum. This image should make people want to be      ║
+  ║  there. It is the emotional closer before the product section.   ║
+  ║                                                                  ║
+  ║  USE FOR NOW: /mnt/user-data/uploads/53f63bc5...jfif             ║
+  ╚══════════════════════════════════════════════════════════════════╝
+  -->
+  <img class="wow-bg" src="/mnt/user-data/uploads/53f63bc5-7504-46e4-a343-9f25f7736cce.jfif" alt="Warm evening patio with Wizard screen">
+  <div class="wow-ov"></div>
+  <div class="wow-content rv">
+    <h2>Imagine your home<br>feeling this open.</h2>
+    <p>Every day. Every evening. All season long.</p>
+    <a href="#discovery" class="btn-teal">Find My Best Screen</a>
+  </div>
+</section>
+
+<!-- ════ BEFORE / AFTER ════ -->
+<section class="transform" id="transform">
+  <div class="wrap">
+    <div class="tf-grid">
+
+      <div class="rv">
+        <!--
+        📸 BEFORE/AFTER: Same door, same angle.
+        BEFORE: /mnt/user-data/uploads/1e66ae65...jfif
+        AFTER:  /mnt/user-data/uploads/4f9d4277...jfif
+        Best upgrade: shoot a matched before/after pair at one installation.
+        -->
+        <div class="ba" id="baWrap">
+          <img src="/mnt/user-data/uploads/1e66ae65-7154-46a2-9ba4-071bd31ba1e8.jfif" alt="Without Wizard screen">
+          <img class="ba-r" id="baAfter" src="/mnt/user-data/uploads/4f9d4277-b049-4f7a-b80d-b5439c9c6fc4.jfif" alt="With Wizard screen installed">
+          <span class="ba-tag bef">Without</span>
+          <span class="ba-tag aft">With Wizard</span>
+          <div class="ba-line" id="baLine"></div>
+          <div class="ba-knob" id="baKnob">
+            <svg width="20" height="12" viewBox="0 0 20 12" fill="none">
+              <path d="M1 6h18M5 2L1 6l4 4M15 2l4 4-4 4" stroke="#2C2C2C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+        <p class="ba-note">Drag left or right to compare</p>
+      </div>
+
+      <div class="rv d2">
+        <span class="eyebrow">The Difference</span>
+        <h2 class="hed">Comfortable when you want it.<br><em>Invisible when you don't.</em></h2>
+        <p class="body-copy tf-text">Pull it across and the afternoon feels quieter, the bugs disappear, and the evening stretches out. Let it retract and the opening looks exactly how it was designed. Nothing in the way. Nothing to think about.</p>
+        <ul class="tf-outcomes">
+          <li>More fresh air moving through your home</li>
+          <li>Comfortable evenings outside, without the bugs</li>
+          <li>Better use of outdoor spaces all season long</li>
+          <li>Clean, uninterrupted views when you want them</li>
+        </ul>
+        <a href="#cta" class="btn-dark">Talk To An Expert</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════ PRODUCTS ════ -->
+<section class="products" id="products">
+  <div class="wrap">
+    <div class="prod-hdr rv">
+      <span class="eyebrow">Explore by Category</span>
+      <h2 class="hed">The right screen for<br><em>every space.</em></h2>
+      <p class="body-copy">Every Wizard screen is purpose built for a specific opening. Explore solutions based on the space you want to screen and find the option that fits your home best.</p>
+    </div>
+
+    <!-- Category dividers within product grid -->
+    <div style="margin-bottom:32px;" class="rv d1">
+      <div style="display:flex;align-items:center;gap:18px;padding-bottom:14px;border-bottom:1px solid var(--stone);">
+        <span style="font-size:9px;font-weight:700;letter-spacing:0.24em;text-transform:uppercase;color:var(--ink-soft);">Category 01</span>
+        <span style="font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;color:var(--charcoal);">Door Openings</span>
+        <span style="font-size:12px;font-weight:300;color:var(--ink-faint);">Front doors, patio doors, French doors, sliding doors</span>
+      </div>
+    </div>
+
+    <div class="pgrid">
+
+      <!-- BetterView — Cat 01 -->
+      <div class="pc rv">
+        <div class="pc-img">
+          <img src="/mnt/user-data/uploads/wizard_screens-18.jpg" alt="BetterView on front entry door">
+        </div>
+        <div class="pc-body">
+          <span class="pc-space">Front Entry Doors</span>
+          <div class="pc-name">BetterView</div>
+          <div class="pc-benefit">Fresh air for the doors you use every day.</div>
+          <p class="pc-desc">Designed for front entry doors and everyday openings. Smooth operation, clean design, and retracts out of sight when not in use.</p>
+          <a href="#" class="pc-learn">Learn More <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+        </div>
+      </div>
+
+      <!-- RetractaView — Cat 01 -->
+      <div class="pc rv d1">
+        <div class="pc-img">
+          <img src="/mnt/user-data/uploads/L1210187.jpg" alt="RetractaView on sliding patio door">
+        </div>
+        <div class="pc-body">
+          <span class="pc-space">Sliding Patio Doors</span>
+          <div class="pc-name">RetractaView™</div>
+          <div class="pc-benefit">One finger open. Gone when you don't need it.</div>
+          <p class="pc-desc">Designed for patio doors, sliding doors, and larger everyday openings. Smooth operation that disappears when you do not need it.</p>
+          <a href="#" class="pc-learn">Learn More <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Category 02 divider -->
+    <div style="margin:40px 0 32px;" class="rv">
+      <div style="display:flex;align-items:center;gap:18px;padding-bottom:14px;border-bottom:1px solid var(--stone);">
+        <span style="font-size:9px;font-weight:700;letter-spacing:0.24em;text-transform:uppercase;color:var(--ink-soft);">Category 02</span>
+        <span style="font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;color:var(--charcoal);">Large &amp; Architectural Openings</span>
+        <span style="font-size:12px;font-weight:300;color:var(--ink-faint);">Bifold walls, folding glass systems, wide spans</span>
+      </div>
+    </div>
+    <div class="pgrid">
+
+      <!-- VistaView — Cat 02 -->
+      <div class="pc rv">
+        <div class="pc-img">
+          <img src="/mnt/user-data/uploads/WDC24595.JPG" alt="VistaView on large bifold opening">
+        </div>
+        <div class="pc-body">
+          <span class="pc-space">Large Openings &amp; Bifold Walls</span>
+          <div class="pc-name">VistaView™</div>
+          <div class="pc-benefit">Open up your whole wall. Screen stays invisible.</div>
+          <p class="pc-desc">For wide bifold walls and large openings up to 29 feet. One smooth motion. Tucks completely out of sight when open. The screen architects specify when the span demands it.</p>
+          <a href="#" class="pc-learn">Learn More <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+        </div>
+      </div>
+
+      <!-- VistaView Plus — Cat 02 -->
+      <div class="pc rv d1">
+        <div class="pc-img">
+          <!--
+          ╔═════════════════════════════════════════╗
+          ║  PHOTO NEEDED — VistaView Plus           ║
+          ║  Premium wide opening, natural light.    ║
+          ║  600×440px minimum.                      ║
+          ╚═════════════════════════════════════════╝
+          -->
+          <div class="ph" style="height:220px;">
+            <div class="ph-icon">📷</div>
+            <div class="ph-label">VistaView Plus Photo Needed</div>
+          </div>
+        </div>
+        <div class="pc-body">
+          <span class="pc-space">Premium Wide Openings</span>
+          <div class="pc-name">VistaView Plus™</div>
+          <div class="pc-benefit">Same effortless span. Elevated finish.</div>
+          <p class="pc-desc">Built for extra wide openings where a standard large opening screen is not enough. Designed for expansive glass walls and oversized openings.</p>
+          <a href="#" class="pc-learn">Learn More <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+        </div>
+      </div>
+
+      <!-- The Horizon — Cat 02 -->
+      <div class="pc rv d2">
+        <div class="pc-img">
+          <!--
+          ╔═════════════════════════════════════════╗
+          ║  PHOTO NEEDED — The Horizon              ║
+          ║  Widest span installation, 30–43ft.      ║
+          ║  600×440px minimum.                      ║
+          ╚═════════════════════════════════════════╝
+          -->
+          <div class="ph" style="height:220px;">
+            <div class="ph-icon">📷</div>
+            <div class="ph-label">The Horizon Photo Needed</div>
+          </div>
+        </div>
+        <div class="pc-body">
+          <span class="pc-space">Architectural Openings</span>
+          <div class="pc-name">The Horizon</div>
+          <div class="pc-benefit">Up to 43 feet wide. Nothing else comes close.</div>
+          <p class="pc-desc">When the opening is too wide for anything else, The Horizon covers spans that no other retractable screen can reach. Custom built for extraordinary architecture.</p>
+          <a href="#" class="pc-learn">Learn More <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Category 03 + 04 divider — SmartScreen featured card covers Cat 03, SecuraView covers Cat 04 -->
+    <div style="margin:40px 0 32px;" class="rv">
+      <div style="display:flex;align-items:center;gap:18px;padding-bottom:14px;border-bottom:1px solid var(--stone);">
+        <span style="font-size:9px;font-weight:700;letter-spacing:0.24em;text-transform:uppercase;color:var(--ink-soft);">Category 03</span>
+        <span style="font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;color:var(--charcoal);">Outdoor Living Spaces</span>
+        <span style="font-size:12px;font-weight:300;color:var(--ink-faint);">Covered patios, pergolas, garages, large outdoor spaces</span>
+      </div>
+    </div>
+    <div class="prod-feat rv">
+      <div class="pf-img">
+        <!-- USE: /mnt/user-data/uploads/IMG_5771.JPG or /mnt/user-data/uploads/53f63bc5...jfif -->
+        <img src="/mnt/user-data/uploads/IMG_5771.JPG" alt="SmartScreen Motorized on large covered patio">
+      </div>
+      <div class="pf-body">
+        <span class="pf-tag">Motorized System</span>
+        <h3>SmartScreen<br>Motorized</h3>
+        <p>Push a button. The screen drops, the wind settles, the bugs stay out, and the evening opens up in front of you. Up to 30 feet wide, 16 feet high. Built for outdoor rooms that deserve to be used every day.</p>
+        <p style="font-size:13px;font-weight:300;color:rgba(255,255,255,0.42);margin-top:-20px;margin-bottom:36px;line-height:1.7;">Prefer a manual option? SmartScreen is also available in an easy pull down system for patios, pergolas, garages, and outdoor spaces.</p>
+        <a href="#cta" class="btn-teal" style="width:fit-content;">Talk To An Expert</a>
+      </div>
+    </div>
+
+    <div class="prod-foot rv">
+      <a href="https://www.wizardscreens.com/products/" class="btn-ink">See All Products</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════ GALLERY ════ -->
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="gal-hdr rv">
+      <span class="eyebrow">Real Homes. Real Results.</span>
+      <h2 class="hed">See Wizard in <em>real homes</em><br>across North America.</h2>
+    </div>
+  </div>
+  <div style="max-width:1320px;margin:0 auto;padding:0 52px;">
+    <div class="gmain">
+      <div class="gi gi-1 rv">
+        <img src="/mnt/user-data/uploads/WDC24797.JPG" alt="VistaView — Vancouver BC">
+        <div class="gi-cap">Modern Vancouver Home</div>
+      </div>
+      <div class="gi gi-2 rv d1">
+        <img src="/mnt/user-data/uploads/WDC24595.JPG" alt="Wizard screen residential">
+        <div class="gi-cap">Indoor Outdoor Living — Pacific Northwest</div>
+      </div>
+      <div class="gi gi-3 rv d2">
+        <img src="/mnt/user-data/uploads/335b54ee-a171-43a8-93c0-bdeb62845ad8.jfif" alt="The Horizon — large opening">
+        <div class="gi-cap">Architectural Opening — The Horizon</div>
+      </div>
+      <div class="gi gi-4 rv">
+        <img src="/mnt/user-data/uploads/ada408fd-637e-402f-90a9-580ffb29ce93.jfif" alt="VistaView Plus custom home">
+        <div class="gi-cap">Custom Home — VistaView Plus</div>
+      </div>
+      <div class="gi gi-5 rv d1">
+        <img src="/mnt/user-data/uploads/IMG_5794.JPG" alt="SmartScreen lakefront">
+        <div class="gi-cap">Lakefront Retreat</div>
+      </div>
+      <div class="gi gi-6 rv d2">
+        <img src="/mnt/user-data/uploads/IMG-20251211-WA0051.jpg" alt="SmartScreen at dusk">
+        <div class="gi-cap">Evening Outdoor Living</div>
+      </div>
+      <div class="gi gi-7 rv">
+        <img src="/mnt/user-data/uploads/dc81c282-e14b-4190-8ca8-dd2467f27dd7.jfif" alt="BetterView front entry">
+        <div class="gi-cap">Front Entry — BetterView</div>
+      </div>
+      <div class="gi gi-8 rv d1">
+        <!--
+        ╔═══════════════════════════════════════════════╗
+        ║  GALLERY SLOT 8 — PHOTO NEEDED               ║
+        ║  Interior looking out through open screen     ║
+        ║  at morning garden. Or couple on patio,       ║
+        ║  evening, screen down. Strong lifestyle shot. ║
+        ║  700×560px minimum.                           ║
+        ╚═══════════════════════════════════════════════╝
+        -->
+        <div class="ph" style="height:100%;">
+          <div class="ph-icon">📷</div>
+          <div class="ph-label">Gallery Photo 8 Needed</div>
+          <p class="ph-note">Interior looking out through open screen at morning garden. Or couple on evening patio. Strong lifestyle moment. 700×560px min.</p>
+        </div>
+      </div>
+      <div class="gi gi-9 rv d2">
+        <!--
+        ╔═══════════════════════════════════════════════╗
+        ║  GALLERY SLOT 9 — PHOTO NEEDED               ║
+        ║  Commercial or hospitality installation.      ║
+        ║  Restaurant patio or dramatic architectural   ║
+        ║  home exterior. Statement shot.               ║
+        ╚═══════════════════════════════════════════════╝
+        -->
+        <div class="ph" style="height:100%;">
+          <div class="ph-icon">📷</div>
+          <div class="ph-label">Gallery Photo 9 Needed</div>
+          <p class="ph-note">Commercial or hospitality space. Or dramatic architectural home. Statement shot.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ WHY WIZARD ════ -->
+<section class="why" id="why">
+  <div class="wrap">
+    <div class="why-hdr rv">
+      <span class="eyebrow">Why Wizard</span>
+      <h2 class="hed">Built for everyday comfort.<br><em>Made to last.</em></h2>
+    </div>
+    <div class="why-cols">
+      <div class="wc rv">
+        <div class="wc-icon">✦</div>
+        <h3>Designed to Disappear</h3>
+        <p>When you do not need it, it is completely gone. Your opening looks exactly as designed. Nothing sagging. Nothing blocking. Nothing in the way.</p>
+      </div>
+      <div class="wc rv d1">
+        <div class="wc-icon">⚙</div>
+        <h3>Custom Built</h3>
+        <p>Every screen is manufactured to the exact dimensions of your opening. Not close. Not adjusted on site. Built for your door, every time.</p>
+      </div>
+      <div class="wc rv d2">
+        <div class="wc-icon">◎</div>
+        <h3>Professionally Installed</h3>
+        <p>Authorized installers across the US and Canada handle measuring, fitting, and adjustment. Your screen works correctly from day one.</p>
+      </div>
+      <div class="wc rv d3">
+        <div class="wc-icon">🏠</div>
+        <h3>Built for Everyday Comfort</h3>
+        <p>Trusted by homeowners, architects, and builders for 25 years. Every system we make is backed by the experience of getting it right, year after year.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ TESTIMONIAL ════ -->
+<section class="testi">
+  <div class="wrap">
+    <div class="rv">
+      <span class="stars">★★★★★</span>
+      <blockquote>"We open the doors every morning now. Before the Wizard screen we never could. Too many bugs, too much wind. It completely changed how we use the back half of our house."</blockquote>
+      <cite>Homeowner — Surrey, BC &nbsp;&middot;&nbsp; RetractaView Installation</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ════ FINAL CTA ════ -->
+<section class="cta-sec" id="cta">
+  <!--
+  ╔══════════════════════════════════════════════════════════════════╗
+  ║  CTA BACKGROUND — SECOND MOST IMPORTANT IMAGE ON THE PAGE       ║
+  ║                                                                  ║
+  ║  Scene: Golden hour patio. SmartScreen down, warm recessed       ║
+  ║  lighting, outdoor chairs, someone enjoying the evening.         ║
+  ║  Shot from outside looking in. End of a perfect day.             ║
+  ║  1920×880 minimum. This image must make people want to call.     ║
+  ╚══════════════════════════════════════════════════════════════════╝
+  -->
+  <img class="cta-bg" src="/mnt/user-data/uploads/IMG-20251211-WA0051.jpg" alt="Warm evening patio with Wizard screen">
+  <div class="cta-ov"></div>
+  <div class="wrap">
+    <div class="cta-in rv">
+      <span class="eyebrow light">We Will Help You Choose</span>
+      <h2 class="hed light">Let's find the right screen<br>for <em>your home.</em></h2>
+      <p class="body-copy light">We will help you choose the best retractable screen for your home and space. Talk to an authorized Wizard installer near you. They will measure, recommend the right system, and install it properly.</p>
+      <div class="cta-btns">
+        <a href="https://www.wizardscreens.com/request-a-quote/" class="btn-teal">Talk To An Expert</a>
+        <a href="tel:18889493667" class="btn-ghost">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14v2.92z"/></svg>
+          Talk To An Expert
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ FOOTER ════ -->
+<footer>
+  <div class="wrap">
+    <div class="fg">
+      <div class="fb">
+        <!-- White logo on dark footer -->
+        <img src="/mnt/user-data/uploads/wizard-screens-and-shades-white.png" alt="Wizard Screens and Shades">
+        <p>Premium retractable screens and shade systems. Custom built and professionally installed across the United States and Canada for 25 years.</p>
+        <div class="fb-ph">
+          <a href="tel:18889493667">1 888 949 3667</a>
+        </div>
+      </div>
+      <div class="fc">
+        <h4>Products</h4>
+        <ul>
+          <li><a href="#">VistaView</a></li>
+          <li><a href="#">VistaView Plus</a></li>
+          <li><a href="#">The Horizon</a></li>
+          <li><a href="#">RetractaView</a></li>
+          <li><a href="#">BetterView</a></li>
+          <li><a href="#">SmartScreen</a></li>
+          <li><a href="#">SmartScreen Motorized</a></li>
+          <li><a href="#">SecuraView</a></li>
+        </ul>
+      </div>
+      <div class="fc">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Real Homes</a></li>
+          <li><a href="#">Become a Dealer</a></li>
+          <li><a href="#">Customer Support</a></li>
+        </ul>
+      </div>
+      <div class="fc">
+        <h4>Get Started</h4>
+        <ul>
+          <li><a href="#">Talk To An Expert</a></li>
+          <li><a href="#">Find an Installer</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="tel:18889493667">Call 1 888 949 3667</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbot">
+      <p>&copy; 2025 Wizard Screens and Shades. All rights reserved.</p>
+      <p>Designed for beauty. Built better.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── Scroll reveal ──────────────────────────────────
+const rvEls = document.querySelectorAll('.rv');
+const rvObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('on'); rvObs.unobserve(e.target); }
+  });
+}, { threshold: 0.08 });
+rvEls.forEach(el => rvObs.observe(el));
+
+// ── Before / After slider ──────────────────────────
+const baWrap  = document.getElementById('baWrap');
+const baAfter = document.getElementById('baAfter');
+const baLine  = document.getElementById('baLine');
+const baKnob  = document.getElementById('baKnob');
+let dragging = false;
+
+function setPos(cx) {
+  const r   = baWrap.getBoundingClientRect();
+  const pct = Math.min(95, Math.max(5, ((cx - r.left) / r.width) * 100));
+  baAfter.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+  baLine.style.left = pct + '%';
+  baKnob.style.left = pct + '%';
+}
+
+// Gentle auto-animate on load
+let auto = true, pos = 50, dir = 1;
+function autoAnim() {
+  if (!auto) return;
+  pos += dir * 0.15;
+  if (pos > 70) dir = -1;
+  if (pos < 30) dir  = 1;
+  const r = baWrap.getBoundingClientRect();
+  setPos(r.left + (pos / 100) * r.width);
+  requestAnimationFrame(autoAnim);
+}
+setTimeout(autoAnim, 1800);
+
+baWrap.addEventListener('mousedown',  e => { dragging = true; auto = false; setPos(e.clientX); });
+baWrap.addEventListener('touchstart', e => { dragging = true; auto = false; setPos(e.touches[0].clientX); }, { passive:true });
+window.addEventListener('mousemove',  e => { if (dragging) setPos(e.clientX); });
+window.addEventListener('touchmove',  e => { if (dragging) setPos(e.touches[0].clientX); }, { passive:true });
+window.addEventListener('mouseup',    () => dragging = false);
+window.addEventListener('touchend',   () => dragging = false);
+</script>
+
+</body>
+</html>
